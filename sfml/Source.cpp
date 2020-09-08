@@ -4,17 +4,12 @@
 #include "SFML/System.hpp"
 #include <vector>
 
-
-class OriginPoin
-{
-
-};
-
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1900, 1000), "SFML works!");
     window.setFramerateLimit(120);
-    float radius = 2.f;
+    float radius = 30.f;
+    int speed = 60;
     sf::CircleShape shape(radius,3);
     shape.setPosition(950, 500);
     shape.setFillColor(sf::Color::Red);
@@ -54,10 +49,11 @@ int main()
             if (filter < 0) start = 1000;
             else start = 0;
         }
-        count += filter*10;
+        count += filter*speed;
+        
         
         //clear
-        //window.clear(sf::Color::Blue);
+        window.clear();
 
         //set stuff up
         window.draw(shape);
