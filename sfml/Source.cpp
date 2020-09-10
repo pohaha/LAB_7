@@ -3,6 +3,7 @@
 #include "SFML/Window.hpp"
 #include "SFML/System.hpp"
 #include <vector>
+#include "originPoint.h"
 
 int main()
 {
@@ -31,6 +32,18 @@ int main()
     unsigned int count = 0;
     int filter = 1;
     int start = 0;
+    originPoint NewPoint = { sf::Vector2f(window.getSize()) };
+
+    sf::Text text;
+    text.setString(NewPoint.show());
+    sf::Font newfont;
+    if (!newfont.loadFromFile("C:\\Windows\\Fonts\\consola.ttf"))
+    {
+        std::cout << "error loading font!"<<std::endl;
+        window.close();
+    }
+    text.setFont(newfont);
+   
     while (window.isOpen())
     {
         sf::Event event;
@@ -57,6 +70,8 @@ int main()
 
         //set stuff up
         window.draw(shape);
+        window.draw(text);
+        
         
 
         //display stuff on screen
