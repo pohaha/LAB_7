@@ -35,7 +35,7 @@ int main()
     sf::Text text;
     text.setString(NewPoint.show());
     sf::Font newfont;
-    if (!newfont.loadFromFile("C:\\Windows\\Fonts\\consola.ttf"))
+    if (!newfont.loadFromFile("consola.ttf"))
     {
         std::cout << "error loading font!"<<std::endl;
         window.close();
