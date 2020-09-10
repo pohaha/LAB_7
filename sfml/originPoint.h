@@ -1,7 +1,7 @@
 #pragma once
-#include <SFML/System.hpp>
-#include <string>
-class originPoint
+#include "common.h"
+
+class Point
 {
 public:
 	sf::Vector2f position = { 0.f,0.f };
@@ -9,6 +9,7 @@ public:
 	std::string show();
 	void setOrigin(sf::Vector2f& newPos);
 
-	originPoint(sf::Vector2f pos);
+	Point(sf::Vector2f pos);
+	Point();
 };
 

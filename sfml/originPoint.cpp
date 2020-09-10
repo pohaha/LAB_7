@@ -1,19 +1,23 @@
 #include "originPoint.h"
 #include <string>
-void originPoint::move(sf::Vector2f& step)
+void Point::move(sf::Vector2f& step)
 {
-	originPoint::position += step;
+	Point::position += step;
 }
-std::string originPoint::show()
+std::string Point::show()
 {
 	std::string mess;
-	return mess = "x=" +std::to_string(originPoint::position.x) + "\t y=" + std::to_string(originPoint::position.y);
+	return mess = "x=" +std::to_string(Point::position.x) + "\t y=" + std::to_string(Point::position.y);
 }
-void originPoint::setOrigin(sf::Vector2f& newPos)
+void Point::setOrigin(sf::Vector2f& newPos)
 {
-	originPoint::position = newPos;
+	Point::position = newPos;
 }
-originPoint::originPoint(sf::Vector2f pos)
+Point::Point(sf::Vector2f pos)
 {
-	originPoint::position = pos;
+	Point::position = pos;
+}
+Point::Point()
+{
+
 }

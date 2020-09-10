@@ -6,13 +6,11 @@
 #include <iostream>
 #include "math.h"
 
-//library includes
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
+#include "common.h"
 
 //user includes
 #include "originPoint.h"
+#include "shape.h"
 
 int main()
 {
@@ -32,7 +30,7 @@ int main()
                         });
 
    
-    originPoint NewPoint = { sf::Vector2f(window.getSize()) };
+    Point NewPoint = { sf::Vector2f(window.getSize()) };
 
     sf::Text text;
     text.setString(NewPoint.show());
@@ -43,7 +41,7 @@ int main()
         window.close();
     }
     text.setFont(newfont);
-    NewPoint = originPoint(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height));
+    NewPoint = Point(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height));
     text.setString("the current position is:\n"+NewPoint.show()+"\npoint count is: "+std::to_string(Ellyps.size()));
     text.setPosition(windowSize.x-text.getGlobalBounds().width-10, windowSize.y - text.getGlobalBounds().height-15);
    
