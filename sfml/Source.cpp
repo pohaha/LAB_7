@@ -43,8 +43,7 @@ int main()
     text.setFont(newfont);
     NewPoint = Point(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height));
     text.setString("the current position is:\n"+NewPoint.show()+"\npoint count is: "+std::to_string(Ellyps.size()));
-    text.setPosition(windowSize.x-text.getGlobalBounds().width-10, windowSize.y - text.getGlobalBounds().height-15);
-   
+    text.setPosition(windowSize.x - text.getGlobalBounds().width - 10, windowSize.y - text.getGlobalBounds().height - 15);
     float count = 0;
     while (window.isOpen())
     {

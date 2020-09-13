@@ -1,31 +1,44 @@
 #pragma once
 #include "common.h"
 #include "originPoint.h"
+
+enum allocType
+{
+	STATIC, DYNAMIC
+};
 class shape :
 	public Point, sf::Drawable
 {
 public:	
-	//the dimensions of any figure that inherits from shape
-	float m_Width = 0;
-	float m_Height = 0;
-
-
-	//parametr c-tors
-	shape(float n_width, float n_height);
-	shape(sf::Vector2f n_Dimensions);
+	//data:
+		//the dimensions of any figure that inherits from shape
+	unsigned int m_Width = 0;
+	unsigned int m_Height = 0;
+	allocType m_alloc = STATIC;
 	
-	//copy c-tor
+	//c-tors,d-tors:
+		//parametr c-tors
+	shape(unsigned int n_width, unsigned int n_height, allocType alloc);
+	shape(sf::Vector2u n_Dimensions, allocType alloc);
+	
+		//copy c-tor
 	shape(const shape& n_shape);
 
-	//d-tor
+		//d-tor
 	~shape();
 	
+	//methods to manipulate data
+		//resize method
+	void setSize(int n_height, int n_width);
 	
-	//setting the point at which the figure is being drawn at
-	virtual void setLocalOrigin(sf::Vector2f n_Origin) {}
+		//setting the point at which the figure is being drawn at
+	virtual void setLocalOrigin(sf::Vector2f n_Origin)=0;
 
-	//draw function
-	sf::CircleShape n_draw() { return sf::CircleShape(50, 3); }
+
+	//interface methods:
+		//draw function
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const=0;
+	
 
 
 protected:
@@ -36,6 +49,6 @@ protected:
 	sf::ConvexShape m_Shape;
 
 	//array of points for dynamic allocation
-	sf::Vector2f* pointArray = NULL;
+	sf::Vertex* m_points=nullptr;
 };
 

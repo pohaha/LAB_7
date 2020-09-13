@@ -1,4 +1,4 @@
-i've finished setting up shape.h and started doing an implementation for it
+-finish shape.cpp - done
 
 problems arose when i learned of sf::drawable. Using it is complex, 
 but interesting, might cut out this feature 
@@ -35,6 +35,10 @@ possible solutions:
 see sf::RenderTarget--
 
 TODO: 
--finish shape.cpp
+-override the draw function of shape.cpp to draw the outlining of a future figure, showcasing 
+its width and height
+-add sf::text for explaining a user what an outlining is(sf::text,sf::font with a scalable(
+depending on width and height of an object) size)
+-test the shape class
 -create ellyps and triangle classes 
 -override the draw functions and the setting up of their shapes;

@@ -9,7 +9,7 @@ std::string Point::show()
 	std::string mess;
 	return mess = "x=" +std::to_string(Point::position.x) + "\t y=" + std::to_string(Point::position.y);
 }
-void Point::setOrigin(sf::Vector2f& newPos)
+void Point::setPos(sf::Vector2f& newPos)
 {
 	Point::position = newPos;
 }
