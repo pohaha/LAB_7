@@ -1,3 +1,4 @@
+Idea! Make tests as branches to not change my final code too much!
 -finish shape.cpp - done
 
 problems arose when i learned of sf::drawable. Using it is complex, 
