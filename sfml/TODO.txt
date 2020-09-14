@@ -1,45 +1,16 @@
-Idea! Make tests as branches to not change my final code too much!
--finish shape.cpp - done
 
-problems arose when i learned of sf::drawable. Using it is complex, 
-but interesting, might cut out this feature 
-but it'll not be within the DRY(Don't repeat yourself) principle of program engineering
-when i'll decide to get this program going for any shape other then the ones made from triangle
 
-possible solutions:
-                        |1|
+Ideas:
+	Make tests as branches to not change my final code too much!
 
---virtual sf::CircleShape draw(){};--
-                        |2|
---class shape :
-	public Point, sf::Drawable
-	{
-	public:	
-		...
-	private:
-		...
-		 virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
-         {
-             // You can draw other high-level objects
-             target.draw(m_sprite, states);
-    
-             // ... or use the low-level API
-             states.texture = &m_texture;
-             target.draw(m_vertices, states);
-    
-             // ... or draw with OpenGL directly
-             glBegin(GL_QUADS);
-             ...
-             glEnd();
-         }
-    }
-see sf::RenderTarget--
+DONE:
+	-override the draw function of shape.cpp to draw the outlining of a future figure, showcasing 
+	its width and height
+	-add sf::text for explaining a user what an outlining is(sf::text,sf::font with a scalable(
+	depending on width and height of an object) size)
+	-test the shape class
+
 
 TODO: 
--override the draw function of shape.cpp to draw the outlining of a future figure, showcasing 
-its width and height
--add sf::text for explaining a user what an outlining is(sf::text,sf::font with a scalable(
-depending on width and height of an object) size)
--test the shape class
--create ellyps and triangle classes 
--override the draw functions and the setting up of their shapes;
+	-create ellyps and triangle classes 
+	-override the draw functions and the setting up of their shapes;
