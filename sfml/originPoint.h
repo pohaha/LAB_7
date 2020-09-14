@@ -1,14 +1,21 @@
 #pragma once
-#include <SFML/System.hpp>
-#include <string>
-class originPoint
+#include "common.h"
+
+class Point
 {
 public:
-	sf::Vector2f position = { 0.f,0.f };
-	void move(sf::Vector2f& step);
+	//method to get the current location of an object
 	std::string show();
-	void setOrigin(sf::Vector2f& newPos);
+	//methods of manipulating the position of a current object
+	void move(sf::Vector2f& step);
+	void setPos(sf::Vector2f& newPos);
 
-	originPoint(sf::Vector2f pos);
+	//parametr c-tor
+	Point(sf::Vector2f pos);
+	
+	//default c-tor
+	Point();
+protected:
+	sf::Vector2f position = { 0.f,0.f };
 };
 

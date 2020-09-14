@@ -151,10 +151,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="originPoint.cpp" />
+    <ClCompile Include="shape.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common.h" />
     <ClInclude Include="originPoint.h" />
+    <ClInclude Include="shape.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="consola.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

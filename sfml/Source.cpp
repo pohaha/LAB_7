@@ -1,49 +1,50 @@
-#include <iostream>
-#include "SFML/Graphics.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/System.hpp"
+//for the usage of mathematical constants
+#define _USE_MATH_DEFINES
+
+//standart includes
 #include <vector>
+#include <iostream>
+#include "math.h"
+
+#include "common.h"
+
+//user includes
 #include "originPoint.h"
+#include "shape.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1900, 1000), "SFML works!");
-    window.setFramerateLimit(120);
+    sf::Vector2u windowSize = {1900,800};
+    sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), "SFML works!");
+    window.setFramerateLimit(60);
     float radius = 30.f;
-    int speed = 60;
+    float speed = 1.f;
     sf::CircleShape shape(radius,3);
-    shape.setPosition(950, 500);
+    shape.setPosition(float(windowSize.x)/2, float(windowSize.y )/ 2);
     shape.setFillColor(sf::Color::Red);
     shape.setOrigin(radius,radius);
     std::vector<sf::Vector2f> Ellyps;
-    double res;
-    for (double i = 0; i < window.getSize().x; i+=0.1)
-        for (double j = 0; j < window.getSize().y; j += 0.1)
-        {
-            res = pow((i-950),2) / pow(850, 2) + pow((j-500),2) / pow(400, 2);
-            if((res < 1.f) && (res > .9f))
-            {
-                Ellyps.push_back({ float(i),float(j) });
-                break;
-            }
-        }
+    for (float parametr = 0; parametr < 360; parametr += 1)
+        Ellyps.push_back({ ((float(windowSize.x) / 2) - 100) * float(cos(2 * M_PI / 360 * parametr)) + (float(windowSize.x) / 2),
+                           ((float(windowSize.y) / 2) - 100) * float(sin(2 * M_PI / 360 * parametr)) + (float(windowSize.y) / 2) 
+                        });
 
    
-    unsigned int count = 0;
-    int filter = 1;
-    int start = 0;
-    originPoint NewPoint = { sf::Vector2f(window.getSize()) };
+    Point NewPoint = { sf::Vector2f(window.getSize()) };
 
     sf::Text text;
     text.setString(NewPoint.show());
     sf::Font newfont;
-    if (!newfont.loadFromFile("C:\\Windows\\Fonts\\consola.ttf"))
+    if (!newfont.loadFromFile("consola.ttf"))
     {
         std::cout << "error loading font!"<<std::endl;
         window.close();
     }
     text.setFont(newfont);
-   
+    NewPoint = Point(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height));
+    text.setString("the current position is:\n"+NewPoint.show()+"\npoint count is: "+std::to_string(Ellyps.size()));
+    text.setPosition(windowSize.x - text.getGlobalBounds().width - 10, windowSize.y - text.getGlobalBounds().height - 15);
+    float count = 0;
     while (window.isOpen())
     {
         sf::Event event;
@@ -53,18 +54,14 @@ int main()
                 window.close();
         }
         //update
-        //hape.rotate(.50f);
-        if ((count < Ellyps.size()) && (count >= 0))
-            shape.setPosition(sf::Vector2f({ Ellyps[count].x, (start + (Ellyps[count].y) * filter) }));
-        else
-        {
-            filter *= -1;
-            if (filter < 0) start = 1000;
-            else start = 0;
-        }
-        count += filter*speed;
+        //shape.rotate(.50f);
+       if (count < Ellyps.size())
+            shape.setPosition(sf::Vector2f({ Ellyps[unsigned int(count)].x, Ellyps[unsigned int(count)].y }));
+       else 
+           count = 0;
         
-        
+       count += speed;
+       
         //clear
         window.clear();
 
