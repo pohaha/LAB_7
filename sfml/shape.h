@@ -18,7 +18,7 @@ public:
 	
 	//c-tors,d-tors:
 		//parametr c-tors
-	shape(unsigned int n_width, unsigned int n_height, allocType alloc);
+	shape(unsigned int&& n_width, unsigned int&& n_height, allocType alloc);
 	shape(sf::Vector2u n_Dimensions, allocType alloc);
 	
 		//copy c-tor
@@ -32,14 +32,16 @@ public:
 	void setSize(int n_height, int n_width);
 	
 		//setting the point at which the figure is being drawn at
-	virtual void setLocalOrigin(sf::Vector2f n_Origin)=0;
+	virtual void setLocalOrigin(sf::Vector2f n_Origin);
 
 
 	//interface methods:
 		//draw function
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const=0;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	
 
+	// test methods::
+	void setborder();
 
 protected:
 	//local origin that the figure is being drawn inside the shape
@@ -50,5 +52,6 @@ protected:
 
 	//array of points for dynamic allocation
 	sf::Vertex* m_points=nullptr;
+	
 };
 
