@@ -6,3 +6,4 @@
 
 //common STD lib includes
 #include <string>
+#include <iostream>
