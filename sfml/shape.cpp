@@ -44,6 +44,12 @@ void shape::setLocalOrigin(sf::Vector2f n_Origin)
 	LocalOrigin = n_Origin;
 }
 
+void shape::move(sf::Vector2f& step)
+{
+	position += step - LocalOrigin;
+	refresh(m_points, REFRESH_ALL);
+}
+
 
 
 	
