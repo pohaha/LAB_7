@@ -2,9 +2,9 @@
 #include "common.h"
 #include "originPoint.h"
 
-enum allocType
+enum RefreshOptions
 {
-	STATIC, DYNAMIC
+	REFRESH_CONVEX_ONLY, REFRESH_ALL
 };
 class shape :
 	public Point, sf::Drawable
@@ -55,6 +55,6 @@ protected:
 	sf::Vector2f* m_points=nullptr;
 
 	//refreshes the points when the shape is changed
-	virtual void refresh(sf::Vector2f* n_points) = 0;
+	virtual void refresh(sf::Vector2f* n_points,RefreshOptions OPT) = 0;
 };
 

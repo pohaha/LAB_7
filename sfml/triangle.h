@@ -13,6 +13,6 @@ class triangle :
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-	virtual void refresh(sf::Vector2f* n_points) override;
+	virtual void refresh(sf::Vector2f* n_points, RefreshOptions OPT) override;
 
 };

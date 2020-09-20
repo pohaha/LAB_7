@@ -3,10 +3,7 @@
 float min(sf::Vector2f* pointsArray, coord type);
 float max(sf::Vector2f* pointsArray, coord type);
 
-enum RefreshOptions
-{
-	REFRESH_CONVEX_ONLY,REFRESH_ALL
-};
+
 
 
 
@@ -30,16 +27,16 @@ void triangle::refresh(sf::Vector2f* n_points,RefreshOptions OPT)
 triangle::triangle(int n_width, int n_height) :
 	shape(n_width, n_height)
 {
-	if ((m_Hidth == 0) || (m_Height == 0))
+	if ((m_Width == 0) || (m_Height == 0))
 	{
 		std::cout << "all points of triangle cannot be on the same line!! LEARN MATH!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	m_pointCount = 3;
 	m_points = new sf::Vector2f[m_pointCount];
-	m_points[0] = { 0,m_Height };
-	m_points[1] = { m_Width/2,0 };
-	m_points[2] = { m_Width,m_Height };
+	m_points[0] = { 0,float(m_Height) };
+	m_points[1] = { float(m_Width)/2,0 };
+	m_points[2] = { float(m_Width),float(m_Height)};
 	refresh(m_points, REFRESH_CONVEX_ONLY);
 
 }
@@ -53,10 +50,10 @@ triangle::triangle(sf::Vector2f* n_points)
 	}
 	else
 	{
-		refresh(n_points);
+		refresh(n_points,REFRESH_ALL);
 	}
 }
 void triangle::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-
+	target.draw(m_Shape);
 }
