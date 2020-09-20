@@ -43,7 +43,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const=0;
 		//move the object method
 
-	virtual void move(sf::Vector2f& step) override;
+	virtual void move(const sf::Vector2f& step) override;
 
 
 protected:

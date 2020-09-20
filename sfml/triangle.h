@@ -16,4 +16,6 @@ public:
 
 	virtual void refresh(sf::Vector2f* n_points, RefreshOptions OPT) override;
 
+
+
 };

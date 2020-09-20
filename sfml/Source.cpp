@@ -67,7 +67,9 @@ int main()
     trianglePoints[2] = sf::Vector2f(50, 30);
 
     triangle triangle_one(trianglePoints);
-
+    int count = 0;
+    sf::Vector2f step = { 1.f, 1.f };
+    bool flag = false;
     while (window.isOpen())
     {
         sf::Event event;
@@ -78,7 +80,12 @@ int main()
         }
         //update
         //shape.rotate(.50f);
+        
+        if ((count % 100) == 0)     flag = !flag;        
+        if (flag)                   triangle_one.move(step);
+        else                        triangle_one.move(-step);
 
+        count++;
 
         //clear
         window.clear();
