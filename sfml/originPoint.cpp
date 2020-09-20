@@ -1,6 +1,6 @@
 #include "originPoint.h"
 #include <string>
-void Point::move(sf::Vector2f& step)
+void Point::move(const sf::Vector2f& step)
 {
 	Point::position += step;
 }
