@@ -52,9 +52,9 @@ protected:
 	sf::ConvexShape m_Shape;
 
 	//array of points for dynamic allocation
-	sf::Vertex* m_points=nullptr;
+	sf::Vector2f* m_points=nullptr;
 
 	//refreshes the points when the shape is changed
-	virtual void refresh() = 0;
+	virtual void refresh(sf::Vector2f* n_points) = 0;
 };
 

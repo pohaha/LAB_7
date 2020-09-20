@@ -12,42 +12,42 @@
 #include "shape.h"
 
 
-float min(sf::Vertex* pointsArray, coord type)
+float min(sf::Vector2f* pointsArray, coord type)
 {
     float returnVal;
     if (type == s_x)
     {
-        returnVal = pointsArray[0].position.x;
+        returnVal = pointsArray[0].x;
         for (int i = 1; i < 2; i++)
-            if (returnVal > pointsArray[i].position.x)
-                returnVal = pointsArray[i].position.x;
+            if (returnVal > pointsArray[i].x)
+                returnVal = pointsArray[i].x;
     }
     else
     {
-        returnVal = pointsArray[0].position.y;
+        returnVal = pointsArray[0].y;
         for (int i = 1; i < 2; i++)
-            if (returnVal > pointsArray[i].position.y)
-                returnVal = pointsArray[i].position.y;
+            if (returnVal > pointsArray[i].y)
+                returnVal = pointsArray[i].y;
     }
     return returnVal;
 }
 
-float max(sf::Vertex* pointsArray, coord type)
+float max(sf::Vector2f* pointsArray, coord type)
 {
     float returnVal;
     if (type == s_x)
     {
-        returnVal = pointsArray[0].position.x;
+        returnVal = pointsArray[0].x;
         for (int i = 1; i < 2; i++)
-            if (returnVal < pointsArray[i].position.x)
-                returnVal = pointsArray[i].position.x;
+            if (returnVal < pointsArray[i].x)
+                returnVal = pointsArray[i].x;
     }
     else
     {
-        returnVal = pointsArray[0].position.y;
+        returnVal = pointsArray[0].y;
         for (int i = 1; i < 2; i++)
-            if (returnVal < pointsArray[i].position.y)
-                returnVal = pointsArray[i].position.y;
+            if (returnVal < pointsArray[i].y)
+                returnVal = pointsArray[i].y;
     }
     return returnVal;
 }
@@ -97,7 +97,8 @@ int main()
         //update
         //shape.rotate(.50f);
        if (count < Ellyps.size())
-            shape.setPosition(sf::Vector2f({ Ellyps[unsigned int(count)].x, Ellyps[unsigned int(count)].y }));
+        //    shape.setPosition(sf::Vector2f({ Ellyps[unsigned int(count)].x, Ellyps[unsigned int(count)].y }));
+        shape.move(Ellyps[count] - shape.getPosition());
        else 
            count = 0;
         

@@ -9,8 +9,10 @@ class triangle :
 	triangle(int n_width, int n_height);
 
 		//point c-tor
-	triangle(sf::Vector2f point_A, sf::Vector2f point_B, sf::Vector2f point_C);
+	triangle(sf::Vector2f* n_points);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+	virtual void refresh(sf::Vector2f* n_points) override;
 
 };
