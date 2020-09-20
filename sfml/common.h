@@ -6,3 +6,9 @@
 
 //common STD lib includes
 #include <string>
+#include <iostream>
+enum coord
+{
+    s_x, s_y
+};
+

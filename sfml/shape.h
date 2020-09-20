@@ -14,12 +14,15 @@ public:
 		//the dimensions of any figure that inherits from shape
 	unsigned int m_Width = 0;
 	unsigned int m_Height = 0;
-	allocType m_alloc = STATIC;
+	unsigned int m_pointCount=0;
 	
 	//c-tors,d-tors:
+		//default c-tor
+	shape();
+	
 		//parametr c-tors
-	shape(unsigned int n_width, unsigned int n_height, allocType alloc);
-	shape(sf::Vector2u n_Dimensions, allocType alloc);
+	shape(unsigned int n_width, unsigned int n_height);
+	shape(sf::Vector2u n_Dimensions);
 	
 		//copy c-tor
 	shape(const shape& n_shape);
@@ -32,7 +35,7 @@ public:
 	void setSize(int n_height, int n_width);
 	
 		//setting the point at which the figure is being drawn at
-	virtual void setLocalOrigin(sf::Vector2f n_Origin)=0;
+	void setLocalOrigin(sf::Vector2f n_Origin);
 
 
 	//interface methods:
@@ -50,5 +53,8 @@ protected:
 
 	//array of points for dynamic allocation
 	sf::Vertex* m_points=nullptr;
+
+	//refreshes the points when the shape is changed
+	virtual void refresh() = 0;
 };
 

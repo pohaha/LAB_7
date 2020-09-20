@@ -3,7 +3,6 @@
 
 //standart includes
 #include <vector>
-#include <iostream>
 #include "math.h"
 
 #include "common.h"
@@ -11,6 +10,48 @@
 //user includes
 #include "originPoint.h"
 #include "shape.h"
+
+
+float min(sf::Vertex* pointsArray, coord type)
+{
+    float returnVal;
+    if (type == s_x)
+    {
+        returnVal = pointsArray[0].position.x;
+        for (int i = 1; i < 2; i++)
+            if (returnVal > pointsArray[i].position.x)
+                returnVal = pointsArray[i].position.x;
+    }
+    else
+    {
+        returnVal = pointsArray[0].position.y;
+        for (int i = 1; i < 2; i++)
+            if (returnVal > pointsArray[i].position.y)
+                returnVal = pointsArray[i].position.y;
+    }
+    return returnVal;
+}
+
+float max(sf::Vertex* pointsArray, coord type)
+{
+    float returnVal;
+    if (type == s_x)
+    {
+        returnVal = pointsArray[0].position.x;
+        for (int i = 1; i < 2; i++)
+            if (returnVal < pointsArray[i].position.x)
+                returnVal = pointsArray[i].position.x;
+    }
+    else
+    {
+        returnVal = pointsArray[0].position.y;
+        for (int i = 1; i < 2; i++)
+            if (returnVal < pointsArray[i].position.y)
+                returnVal = pointsArray[i].position.y;
+    }
+    return returnVal;
+}
+
 
 int main()
 {
