@@ -9,18 +9,15 @@ float max(sf::Vector2f* pointsArray, coord type);
 
 void triangle::refresh(sf::Vector2f* n_points,RefreshOptions OPT)
 {
-	if(OPT == REFRESH_ALL)
-		m_points = new sf::Vector2f[m_pointCount];
-	m_Shape.setPointCount(m_pointCount);
+		
 	for (unsigned int i = 0; i < m_pointCount; i++)
 	{
 		if (OPT == REFRESH_ALL)
 			m_points[i] = n_points[i] + position - LocalOrigin;
-		m_Shape.setPoint(0, n_points[i]);
+		m_Shape.setPoint(i, m_points[i]);
 	}
 	m_Shape.setPosition(position - LocalOrigin);
-	m_Width = max(m_points, s_x) - min(m_points, s_x);
-	m_Height = max(m_points, s_y) - min(m_points, s_y);
+
 }
 
 
@@ -50,7 +47,11 @@ triangle::triangle(sf::Vector2f* n_points)
 	}
 	else
 	{
+		m_points = new sf::Vector2f[m_pointCount];
+		m_Shape.setPointCount(m_pointCount);
 		refresh(n_points,REFRESH_ALL);
+		m_Width = max(m_points, s_x) - min(m_points, s_x);
+		m_Height = max(m_points, s_y) - min(m_points, s_y);
 	}
 }
 void triangle::draw(sf::RenderTarget& target, sf::RenderStates states) const
