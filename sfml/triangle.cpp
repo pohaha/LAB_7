@@ -16,7 +16,7 @@ void triangle::refresh(sf::Vector2f* n_points,RefreshOptions OPT)
 	{
 		if (OPT == REFRESH_ALL)
 			m_points[i] = n_points[i] + position - LocalOrigin;
-		m_Shape.setPoint(0, n_points[i]);
+		m_Shape.setPoint(i, n_points[i]);
 	}
 	m_Shape.setPosition(position - LocalOrigin);
 	m_Width = max(m_points, s_x) - min(m_points, s_x);
@@ -42,7 +42,7 @@ triangle::triangle(int n_width, int n_height) :
 }
 triangle::triangle(sf::Vector2f* n_points)
 {
-	m_pointCount = 3;
+	triangle::m_pointCount = 3;
 	if (((n_points[0].x == n_points[1].x) && (n_points[1].x == n_points[2].x)) || ((n_points[0].y == n_points[1].y) && (n_points[1].x == n_points[2].y)))
 	{
 		std::cout << "all points of triangle cannot be on the same line!! LEARN MATH!" << std::endl;
