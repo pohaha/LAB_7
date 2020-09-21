@@ -39,14 +39,34 @@ void shape::setSize(int n_height, int n_width)
 }
 
 	//set origin implementation
-void shape::setLocalOrigin(sf::Vector2f n_Origin)
+void shape::setLocalOrigin(const sf::Vector2f n_Origin)
 {
 	LocalOrigin = n_Origin;
 }
 
+//interface methods
+	//draw function
+void shape::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(m_Shape);
+}
+
+void shape::refresh(sf::Vector2f* n_points, RefreshOptions OPT)
+{
+
+	for (unsigned int i = 0; i < m_pointCount; i++)
+	{
+		if (OPT == REFRESH_ALL)
+			m_points[i] = n_points[i] + position-LocalOrigin;
+		m_Shape.setPoint(i, m_points[i]);
+	}
+	m_Shape.setPosition(position - LocalOrigin);
+	
+
+}
 void shape::move(const sf::Vector2f& step)
 {
-	position += step - LocalOrigin;
+	position += step;
 	refresh(m_points, REFRESH_CONVEX_ONLY);
 }
 

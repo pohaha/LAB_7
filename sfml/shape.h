@@ -14,6 +14,7 @@ public:
 		//the dimensions of any figure that inherits from shape
 	unsigned int m_Width = 0;
 	unsigned int m_Height = 0;
+		//number of points of a figure
 	unsigned int m_pointCount=0;
 	
 	//c-tors,d-tors:
@@ -35,17 +36,18 @@ public:
 	void setSize(int n_height, int n_width);
 	
 		//setting the point at which the figure is being drawn at
-	void setLocalOrigin(sf::Vector2f n_Origin);
+	void setLocalOrigin(const sf::Vector2f n_Origin);
 
 
 	//interface methods:
 		//draw function
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const=0;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		//move the object method
 
 	virtual void move(const sf::Vector2f& step) override;
 
 
+	sf::Vector2f* m_points=nullptr;
 protected:
 	//local origin that the figure is being drawn inside the shape
 	sf::Vector2f LocalOrigin = { 0.f,0.f };
@@ -54,9 +56,8 @@ protected:
 	sf::ConvexShape m_Shape;
 
 	//array of points for dynamic allocation
-	sf::Vector2f* m_points=nullptr;
 
 	//refreshes the points when the shape is changed
-	virtual void refresh(sf::Vector2f* n_points,RefreshOptions OPT) = 0;
+	virtual void refresh(sf::Vector2f* n_points,RefreshOptions OPT);
 };
 
