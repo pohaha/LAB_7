@@ -46,6 +46,18 @@ triangle::triangle(sf::Vector2f* n_points)
 		m_Height = max(m_points, s_y) - min(m_points, s_y);
 	}
 }
+triangle::triangle(float eqal_side)
+{
+	m_pointCount = 3;
+	m_points = new sf::Vector2f[m_pointCount];
+	m_Shape.setPointCount(m_pointCount);
+	m_points[0] = sf::Vector2f(0, 0);
+	m_points[1] = sf::Vector2f(eqal_side/2, eqal_side*sqrt(3)/2);
+	m_points[0] = sf::Vector2f(eqal_side, 0);
+	refresh(m_points, REFRESH_CONVEX_ONLY);
+	m_Width = max(m_points, s_x) - min(m_points, s_x);
+	m_Height = max(m_points, s_y) - min(m_points, s_y);
+}
 
 void triangle::test(int i)
 {

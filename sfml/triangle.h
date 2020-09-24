@@ -12,6 +12,10 @@ public:
 
 		//point c-tor
 	triangle(sf::Vector2f* n_points);
+
+		//equal sides constructor
+
+	triangle(float eqal_side);
 	void test(int i);
 
 };
