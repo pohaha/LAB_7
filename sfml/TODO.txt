@@ -1,16 +1,3 @@
+-todo:
 
-
-Ideas:
-	Make tests as branches to not change my final code too much!
-
-DONE:
-	-override the draw function of shape.cpp to draw the outlining of a future figure, showcasing 
-	its width and height
-	-add sf::text for explaining a user what an outlining is(sf::text,sf::font with a scalable(
-	depending on width and height of an object) size)
-	-test the shape class
-
-
-TODO: 
-	-create ellyps and triangle classes 
-	-override the draw functions and the setting up of their shapes;
+implement the automatic origin setting in the constructors (newOrigin = sf::Vector2f(m_width/2,m_height/2));
