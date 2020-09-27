@@ -12,6 +12,7 @@ class shape :
 public:	
 	//data:
 		//the dimensions of any figure that inherits from shape
+	sf::Vector2f* m_points=nullptr;
 	unsigned int m_Width = 0;
 	unsigned int m_Height = 0;
 		//number of points of a figure
@@ -47,7 +48,6 @@ public:
 	virtual void move(const sf::Vector2f& step) override;
 
 
-	sf::Vector2f* m_points=nullptr;
 protected:
 	//local origin that the figure is being drawn inside the shape
 	sf::Vector2f LocalOrigin = { 0.f,0.f };
